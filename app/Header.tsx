@@ -1,16 +1,18 @@
 import React from 'react'
-import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react';
 export default function Header() {
-    const router = useRouter();
-
+    const searchParams = useSearchParams()
+ 
+  
+ 
     useEffect(() => {
-        const token = router.query.token as string;
+        const token = searchParams.get('token')
         if (token) {
             localStorage.setItem('jwt_token', token);
-            router.push('/protected');  // Redirect to a protected page
+            
         }
-    }, [router]);
+    }, [searchParams]);
   return (
     <div>
       trabajando mas...
