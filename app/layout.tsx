@@ -1,10 +1,14 @@
 import React from 'react'
 import App from 'next/app';
 
-export default function page() {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div>
-      hellooo main
-    </div>
-  )
+    <html lang="en">
+      <body >{children}</body>
+    </html>
+  );
 }
