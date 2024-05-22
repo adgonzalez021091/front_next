@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSearchParams } from 'next/navigation'
+
 import { useEffect } from 'react';
 export default function Header() {
     const searchParams = useSearchParams()
