@@ -1,6 +1,9 @@
 
 import type { NextApiRequest, NextApiResponse } from 'next'
- 
+import { headers } from 'next/headers'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
+
 type ResponseData = {
   message: string
 }
@@ -8,12 +11,12 @@ type ResponseData = {
 export async function GET(req: NextApiRequest,
   res: NextApiResponse<ResponseData>) {
     
-    const token = req.headers.authorization && req.headers.authorization.split(' ')[1];
-    console.log(req.headers)
+    const headersList = headers()
+  const token = headersList.get('authorization')
     if (token) {
-        res.setHeader('Set-Cookie', `jwt_token=${token}; Path=/; HttpOnly; Secure; SameSite=Strict`);
-        localStorage.setItem('jwt_token', token);
-        res.redirect('/protected');
+      cookies().set('jwt_token', token)
+        //localStorage.setItem('jwt_token', token);
+        redirect('/protected');
     } else {
       return Response.json({ error: 'No token found' })
     }
