@@ -8,7 +8,7 @@ export default function Header() {
   
  
     useEffect(() => {
-        const token = searchParams.get('token')
+        const token = searchParams?.get('token')
         if (token) {
             localStorage.setItem('jwt_token', token);
             
