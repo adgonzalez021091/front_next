@@ -1,16 +1,17 @@
 
 import { NextRequest, NextResponse } from 'next/server';
-import { headers } from 'next/headers'
+//import { headers } from 'next/headers'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-export const dynamic = 'force-dynamic';
 
 
-export async function GET(): Promise<NextResponse>{
+export async function GET(request:NextRequest): Promise<NextResponse>{
     
-    const headersList = headers()
-  const token = headersList.get('authorization')
+    //const headersList = headers()
+    const searchParams = request.nextUrl.searchParams
+  //const token = headersList.get('authorization')
+  const token = searchParams.get('authorization')
     if (token) {
       cookies().set('jwt_token', token)
         //localStorage.setItem('jwt_token', token);
