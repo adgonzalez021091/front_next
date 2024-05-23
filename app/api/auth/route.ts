@@ -1,15 +1,12 @@
 
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { NextRequest, NextResponse } from 'next/server';
 import { headers } from 'next/headers'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-type ResponseData = {
-  message: string
-}
 
-export async function GET(req: NextApiRequest,
-  res: NextApiResponse<ResponseData>) {
+
+export async function GET(req: NextRequest): Promise<NextResponse>{
     
     const headersList = headers()
   const token = headersList.get('authorization')
@@ -18,7 +15,7 @@ export async function GET(req: NextApiRequest,
         //localStorage.setItem('jwt_token', token);
         redirect('/protected');
     } else {
-      return Response.json({ error: 'No token found' })
+      return NextResponse.json({ error: 'No token found' })
     }
 };
 
