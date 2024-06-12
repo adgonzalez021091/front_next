@@ -1,5 +1,8 @@
 import React from 'react'
-import App from 'next/app';
+import ReactQueryProvider from "./utils/providers/ReactQueryProvider";
+import { CookiesProvider } from 'next-client-cookies/server';
+import Header from './components/Header';
+import Title from './components/Title';
 
 export default function RootLayout({
   children,
@@ -8,7 +11,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body >{children}</body>
+      <body >
+      <ReactQueryProvider>
+        <CookiesProvider>
+          <header>
+          <Header >
+
+</Header>
+
+          </header>
+          <section>
+          <main>
+      {children}
+      </main>
+          </section>
+        
+      </CookiesProvider>
+      </ReactQueryProvider>
+      </body>
     </html>
   );
 }

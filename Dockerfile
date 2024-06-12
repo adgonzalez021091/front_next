@@ -32,5 +32,5 @@ COPY --from=builder /app/public ./public
 EXPOSE 3000
 
 # Comando para iniciar la aplicación
-CMD ["npm", "start"]
+CMD ["npm", "run","dev"]
 

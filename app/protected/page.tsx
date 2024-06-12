@@ -1,12 +1,19 @@
 "use client"
 import React from 'react'
-import Header from './Header';
-import { Suspense } from 'react'
+import Header from '../components/Header';
+import Title from '../components/Title';
+import ListaCriterios from '../components/ListaCriterios';
+
 
 
 export default function page() {
+   
     
-    return <div>
-        header...<Suspense><Header></Header></Suspense></div>
-    
+       return <> 
+
+
+</>
+
+
 }
+
