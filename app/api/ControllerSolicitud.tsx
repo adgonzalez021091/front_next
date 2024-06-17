@@ -19,7 +19,6 @@ async function getData(endpoint:String,params:String = "") {
     };
     const parametros = (params != "")?"?"+params:"";
     const url = `${process.env.NEXT_PUBLIC_API_URL}/${endpoint}${parametros}`
-    console.log("2........ya va a armar todooo:",options,url)
 
     
     const response = fetch(url,options)
